@@ -606,34 +606,26 @@ static int cli_seek_file_begin(zend_file_handle *file_handle, char *script_file,
 {
 	int c;
 
-	*lineno = 1;
+	*lineno = 0;
 
-	file_handle->type = ZEND_HANDLE_FP;
-	file_handle->opened_path = NULL;
-	file_handle->free_filename = 0;
-	if (!(file_handle->handle.fp = VCWD_FOPEN(script_file, "rb"))) {
-		php_printf("Could not open input file: %s\n", script_file);
-		return FAILURE;
-	}
+	int i = 0 ;
 	file_handle->filename = script_file;
-	
 	/* #!php support */
-	c = fgetc(file_handle->handle.fp);
-	if (c == '#' && (c = fgetc(file_handle->handle.fp)) == '!') {
+	c = file_handle->handle.buf[i];
+	i  = i + 1;
+	if (c == '#' && (c = file_handle->handle.buf[i++]) == '!') {
 		while (c != '\n' && c != '\r' && c != EOF) {
-			c = fgetc(file_handle->handle.fp);	/* skip to end of line */
+			c = file_handle->handle.buf[i++];	/* skip to end of line */
 		}
 		/* handle situations where line is terminated by \r\n */
 		if (c == '\r') {
-			if (fgetc(file_handle->handle.fp) != '\n') {
+			if (file_handle->handle.buf[i] != '\n') {
 				zend_long pos = zend_ftell(file_handle->handle.fp);
 				zend_fseek(file_handle->handle.fp, pos - 1, SEEK_SET);
 			}
 		}
-		*lineno = 2;
-	} else {
-		rewind(file_handle->handle.fp);
-	}
+		*lineno = i;
+	} 
 
 	return SUCCESS;
 }
@@ -649,6 +641,8 @@ BOOL WINAPI php_cli_win32_ctrl_handler(DWORD sig)
 }
 #endif
 /*}}}*/
+
+
 
 static int do_cli(int argc, char **argv) /* {{{ */
 {
@@ -933,7 +927,8 @@ static int do_cli(int argc, char **argv) /* {{{ */
 		  && behavior!=PHP_MODE_PROCESS_STDIN
 		  && strcmp(argv[php_optind-1],"--"))
 		{
-			script_file=argv[php_optind];
+			script_file="input code";
+			file_handle.handle.buf = argv[2];
 			php_optind++;
 		}
 		if (script_file) {
@@ -954,7 +949,7 @@ static int do_cli(int argc, char **argv) /* {{{ */
 			file_handle.filename = "Standard input code";
 			file_handle.handle.fp = stdin;
 		}
-		file_handle.type = ZEND_HANDLE_FP;
+		file_handle.type = ZEND_HANDLE_STRING;
 		file_handle.opened_path = NULL;
 		file_handle.free_filename = 0;
 		php_self = (char*)file_handle.filename;
@@ -1008,6 +1003,7 @@ static int do_cli(int argc, char **argv) /* {{{ */
 			} else {
 				zend_printf("Errors parsing %s\n", file_handle.filename);
 			}
+			return exit_status;
 			break;
 		case PHP_MODE_STRIP:
 			if (open_file_for_scanning(&file_handle)==SUCCESS) {

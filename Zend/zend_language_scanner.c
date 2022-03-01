@@ -508,45 +508,19 @@ ZEND_API int open_file_for_scanning(zend_file_handle *file_handle)
 	zend_string *compiled_filename;
 
 	/* The shebang line was read, get the current position to obtain the buffer start */
-	if (CG(start_lineno) == 2 && file_handle->type == ZEND_HANDLE_FP && file_handle->handle.fp) {
-		if ((offset = ftell(file_handle->handle.fp)) == (size_t)-1) {
-			offset = 0;
-		}
+	if (CG(start_lineno) != 0 && file_handle->type == ZEND_HANDLE_STRING && file_handle->handle.buf) {
+		
+			offset = CG(start_lineno);
+		
 	}
 
 	if (zend_stream_fixup(file_handle, &buf, &size) == FAILURE) {
 		return FAILURE;
 	}
-
-	zend_llist_add_element(&CG(open_files), file_handle);
-	if (file_handle->handle.stream.handle >= (void*)file_handle && file_handle->handle.stream.handle <= (void*)(file_handle+1)) {
-		zend_file_handle *fh = (zend_file_handle*)zend_llist_get_last(&CG(open_files));
-		size_t diff = (char*)file_handle->handle.stream.handle - (char*)file_handle;
-		fh->handle.stream.handle = (void*)(((char*)fh) + diff);
-		file_handle->handle.stream.handle = fh->handle.stream.handle;
-	}
-
 	/* Reset the scanner for scanning the new file */
 	SCNG(yy_in) = file_handle;
 	SCNG(yy_start) = NULL;
-
 	if (size != (size_t)-1) {
-		if (CG(multibyte)) {
-			SCNG(script_org) = (unsigned char*)buf;
-			SCNG(script_org_size) = size;
-			SCNG(script_filtered) = NULL;
-
-			zend_multibyte_set_filter(NULL);
-
-			if (SCNG(input_filter)) {
-				if ((size_t)-1 == SCNG(input_filter)(&SCNG(script_filtered), &SCNG(script_filtered_size), SCNG(script_org), SCNG(script_org_size))) {
-					zend_error_noreturn(E_COMPILE_ERROR, "Could not convert the script from the detected "
-							"encoding \"%s\" to a compatible encoding", zend_multibyte_get_encoding_name(LANG_SCNG(script_encoding)));
-				}
-				buf = (char*)SCNG(script_filtered);
-				size = SCNG(script_filtered_size);
-			}
-		}
 		SCNG(yy_start) = (unsigned char *)buf - offset;
 		yy_scan_buffer(buf, (unsigned int)size);
 	} else {
@@ -554,7 +528,7 @@ ZEND_API int open_file_for_scanning(zend_file_handle *file_handle)
 	}
 
 	BEGIN(INITIAL);
-
+	//TODO:下面一行用于测试,最终需要删除
 	if (file_handle->opened_path) {
 		compiled_filename = zend_string_copy(file_handle->opened_path);
 	} else {

@@ -437,7 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/hxg/work/php-7.3.33-src'
+ac_pwd='/home/hxg/work/zend'
 srcdir='.'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
@@ -755,8 +755,7 @@ S["PEAR_INSTALLDIR"]=""
 S["NATIVE_RPATHS"]=""
 S["INSTALL_IT"]=""
 S["EXTRA_INCLUDES"]=""
-S["INCLUDES"]=" -I/home/hxg/work/php-7.3.33-src/ext/date/lib -I/usr/include/libxml2 -I/home/hxg/work/php-7.3.33-src/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I"\
-"$(top_builddir)/Zend"
+S["INCLUDES"]=" -I/home/hxg/work/zend/ext/date/lib -I/usr/include/libxml2 -I/home/hxg/work/zend/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I$(top_builddir)/Zend"
 S["ZEND_EXTRA_LIBS"]=""
 S["EXTRA_LIBS"]="-lcrypt   -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt -lxml2 -lxml2 -lxml2 -lcrypt "
 S["EXTRA_LDFLAGS_PROGRAM"]="  "
@@ -765,10 +764,10 @@ S["EXTENSION_DIR"]="/usr/local/lib/php/extensions/no-debug-non-zts-20180731"
 S["DEBUG_CFLAGS"]=""
 S["program_suffix"]=""
 S["program_prefix"]=""
-S["php_abs_top_srcdir"]="/home/hxg/work/php-7.3.33-src"
-S["php_abs_top_builddir"]="/home/hxg/work/php-7.3.33-src"
-S["abs_srcdir"]="/home/hxg/work/php-7.3.33-src"
-S["abs_builddir"]="/home/hxg/work/php-7.3.33-src"
+S["php_abs_top_srcdir"]="/home/hxg/work/zend"
+S["php_abs_top_builddir"]="/home/hxg/work/zend"
+S["abs_srcdir"]="/home/hxg/work/zend"
+S["abs_builddir"]="/home/hxg/work/zend"
 S["PHP_INSTALLED_SAPIS"]=" cli phpdbg cgi"
 S["EXPANDED_PHP_CONFIG_FILE_SCAN_DIR"]=""
 S["EXPANDED_PHP_CONFIG_FILE_PATH"]="/usr/local/lib"
@@ -1341,7 +1340,7 @@ D["HAVE_STDARG_H"]=" 1"
 D["HAVE_SIGPROCMASK"]=" 1"
 D["HAVE_GETHOSTBYNAME_R"]=" 1"
 D["HAVE_FUNC_GETHOSTBYNAME_R_6"]=" 1"
-D["PHP_BUILD_DATE"]=" \"2022-02-24\""
+D["PHP_BUILD_DATE"]=" \"2022-03-01\""
 D["PHP_UNAME"]=" \"Linux hxg-OptiPlex-3060 5.4.0-100-generic #113-Ubuntu SMP Thu Feb 3 18:43:29 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux\""
 D["PHP_OS"]=" \"Linux\""
 D["HAVE_BUILD_DEFS_H"]=" 1"

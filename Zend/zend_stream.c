@@ -104,19 +104,13 @@ static size_t zend_stream_fsize(zend_file_handle *file_handle) /* {{{ */
 {
 	zend_stat_t buf;
 
-	if (zend_stream_is_mmap(file_handle)) {
-		return file_handle->handle.stream.mmap.len;
+	if (file_handle->handle.buf && CG(start_lineno) != 0) {
+
+		return strlen(file_handle->handle.buf)-CG(start_lineno);
 	}
-	if (file_handle->type == ZEND_HANDLE_STREAM || file_handle->type == ZEND_HANDLE_MAPPED) {
-		return file_handle->handle.stream.fsizer(file_handle->handle.stream.handle);
-	}
-	if (file_handle->handle.fp && zend_fstat(fileno(file_handle->handle.fp), &buf) == 0) {
-#ifdef S_ISREG
-		if (!S_ISREG(buf.st_mode)) {
-			return 0;
-		}
-#endif
-		return buf.st_size;
+	else
+	{
+		return strlen(file_handle->handle.buf);
 	}
 
 	return -1;
@@ -170,104 +164,27 @@ ZEND_API int zend_stream_fixup(zend_file_handle *file_handle, char **buf, size_t
 	size_t size;
 	zend_stream_type old_type;
 
-	if (file_handle->type == ZEND_HANDLE_FILENAME) {
-		if (zend_stream_open(file_handle->filename, file_handle) == FAILURE) {
-			return FAILURE;
-		}
-	}
 
-	switch (file_handle->type) {
-		case ZEND_HANDLE_FD:
-			file_handle->type = ZEND_HANDLE_FP;
-			file_handle->handle.fp = fdopen(file_handle->handle.fd, "rb");
-			/* no break; */
-		case ZEND_HANDLE_FP:
-			if (!file_handle->handle.fp) {
-				return FAILURE;
-			}
-			memset(&file_handle->handle.stream.mmap, 0, sizeof(zend_mmap));
+	if (!file_handle->handle.buf) {
+		return FAILURE;
+	}
+	memset(&file_handle->handle.stream.mmap, 0, sizeof(zend_mmap));
 			file_handle->handle.stream.isatty     = isatty(fileno((FILE *)file_handle->handle.stream.handle)) ? 1 : 0;
 			file_handle->handle.stream.reader     = (zend_stream_reader_t)zend_stream_stdio_reader;
 			file_handle->handle.stream.closer     = (zend_stream_closer_t)zend_stream_stdio_closer;
 			file_handle->handle.stream.fsizer     = (zend_stream_fsizer_t)zend_stream_stdio_fsizer;
-			memset(&file_handle->handle.stream.mmap, 0, sizeof(file_handle->handle.stream.mmap));
+	memset(&file_handle->handle.stream.mmap, 0, sizeof(file_handle->handle.stream.mmap));		
+
 			/* no break; */
-		case ZEND_HANDLE_STREAM:
-			/* nothing to do */
-			break;
-
-		case ZEND_HANDLE_MAPPED:
-			file_handle->handle.stream.mmap.pos = 0;
-			*buf = file_handle->handle.stream.mmap.buf;
-			*len = file_handle->handle.stream.mmap.len;
-			return SUCCESS;
-
-		default:
-			return FAILURE;
-	}
+	
 
 	size = zend_stream_fsize(file_handle);
 	if (size == (size_t)-1) {
 		return FAILURE;
 	}
-
-	old_type = file_handle->type;
-	file_handle->type = ZEND_HANDLE_STREAM;  /* we might still be _FP but we need fsize() work */
-
-	if (old_type == ZEND_HANDLE_FP && !file_handle->handle.stream.isatty && size) {
-#if HAVE_MMAP
-		size_t page_size = REAL_PAGE_SIZE;
-
-		if (file_handle->handle.fp &&
-		    size != 0 &&
-		    ((size - 1) % page_size) <= page_size - ZEND_MMAP_AHEAD) {
-			/*  *buf[size] is zeroed automatically by the kernel */
-			*buf = mmap(0, size + ZEND_MMAP_AHEAD, PROT_READ, MAP_PRIVATE, fileno(file_handle->handle.fp), 0);
-			if (*buf != MAP_FAILED) {
-				zend_long offset = ftell(file_handle->handle.fp);
-				file_handle->handle.stream.mmap.map = *buf;
-
-				if (offset != -1) {
-					*buf += offset;
-					size -= offset;
-				}
-				file_handle->handle.stream.mmap.buf = *buf;
-				file_handle->handle.stream.mmap.len = size;
-
-				goto return_mapped;
-			}
-		}
-#endif
-		file_handle->handle.stream.mmap.map = 0;
-		file_handle->handle.stream.mmap.buf = *buf = safe_emalloc(1, size, ZEND_MMAP_AHEAD);
-		file_handle->handle.stream.mmap.len = zend_stream_read(file_handle, *buf, size);
-	} else {
-		size_t read, remain = 4*1024;
-		*buf = emalloc(remain);
-		size = 0;
-
-		while ((read = zend_stream_read(file_handle, *buf + size, remain)) > 0) {
-			size   += read;
-			remain -= read;
-
-			if (remain == 0) {
-				*buf   = safe_erealloc(*buf, size, 2, 0);
-				remain = size;
-			}
-		}
-		file_handle->handle.stream.mmap.map = 0;
-		file_handle->handle.stream.mmap.len = size;
-		if (size && remain < ZEND_MMAP_AHEAD) {
-			*buf = safe_erealloc(*buf, size, 1, ZEND_MMAP_AHEAD);
-		}
-		file_handle->handle.stream.mmap.buf = *buf;
-	}
-
-	if (file_handle->handle.stream.mmap.len == 0) {
-		*buf = erealloc(*buf, ZEND_MMAP_AHEAD);
-		file_handle->handle.stream.mmap.buf = *buf;
-	}
-
+	*buf = file_handle->handle.buf;
+	file_handle->handle.stream.mmap.buf = *buf+CG(start_lineno);
+	file_handle->handle.stream.mmap.len =  size-CG(start_lineno);
 	if (ZEND_MMAP_AHEAD) {
 		memset(file_handle->handle.stream.mmap.buf + file_handle->handle.stream.mmap.len, 0, ZEND_MMAP_AHEAD);
 	}
