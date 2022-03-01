@@ -642,7 +642,24 @@ BOOL WINAPI php_cli_win32_ctrl_handler(DWORD sig)
 #endif
 /*}}}*/
 
-
+int detect_php_language(char * buf)
+{
+	int c;
+	zend_file_handle file_handle;
+	int behavior = PHP_MODE_STANDARD;
+	char *reflection_what = NULL;
+	volatile int request_started = 0;
+	volatile int exit_status = 0;
+	char *php_optarg = NULL, *orig_optarg = NULL;
+	int php_optind = 1, orig_optind = 1;
+	char *exec_direct=NULL, *exec_run=NULL, *exec_begin=NULL, *exec_end=NULL;
+	char *arg_free=NULL, **arg_excp=&arg_free;
+	char *script_file=NULL, *translated_path = NULL;
+	int interactive=0;
+	int lineno = 0;
+	const char *param_error=NULL;
+	int hide_argv = 0;
+}
 
 static int do_cli(int argc, char **argv) /* {{{ */
 {
