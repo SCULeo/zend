@@ -32,4 +32,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/hxg/work/php-7.3.33-src/modules'
+libdir='/home/hxg/work/zend/modules'

@@ -571,9 +571,9 @@ configure:5867: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c  >&5
 configure:5867: $? = 0
 configure:5879: result: yes
 configure:6003: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/ccLEbXJk.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:40: undefined reference to `pthread_mutexattr_init'
-/usr/bin/ld: /home/hxg/work/php-7.3.33-src/conftest.c:41: undefined reference to `pthread_create'
+/usr/bin/ld: /tmp/ccfKLqIf.o: in function `main':
+/home/hxg/work/zend/conftest.c:40: undefined reference to `pthread_mutexattr_init'
+/usr/bin/ld: /home/hxg/work/zend/conftest.c:41: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
 configure:6003: $? = 1
 configure: failed program was:
@@ -679,8 +679,8 @@ configure:6236: checking for Apache 2.0 handler-module support via DSO through A
 configure:6867: result: no
 configure:6899: checking for setproctitle
 configure:6899: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/ccIlDfUA.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:62: undefined reference to `setproctitle'
+/usr/bin/ld: /tmp/ccfj6KDz.o: in function `main':
+/home/hxg/work/zend/conftest.c:62: undefined reference to `setproctitle'
 collect2: error: ld returned 1 exit status
 configure:6899: $? = 1
 configure: failed program was:
@@ -1071,8 +1071,8 @@ configure:11201: $? = 0
 configure:11201: result: yes
 configure:11369: checking for yp_get_default_domain
 configure:11369: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/ccJKByrW.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:72: undefined reference to `yp_get_default_domain'
+/usr/bin/ld: /tmp/cc8DKNxT.o: in function `main':
+/home/hxg/work/zend/conftest.c:72: undefined reference to `yp_get_default_domain'
 collect2: error: ld returned 1 exit status
 configure:11369: $? = 1
 configure: failed program was:
@@ -1154,8 +1154,8 @@ configure: failed program was:
 configure:11369: result: no
 configure:11373: checking for __yp_get_default_domain
 configure:11373: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/cc2uZQoX.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:72: undefined reference to `__yp_get_default_domain'
+/usr/bin/ld: /tmp/ccOVEGFW.o: in function `main':
+/home/hxg/work/zend/conftest.c:72: undefined reference to `__yp_get_default_domain'
 collect2: error: ld returned 1 exit status
 configure:11373: $? = 1
 configure: failed program was:
@@ -1248,8 +1248,8 @@ configure:11492: ./conftest
 configure:11492: $? = 0
 configure:11538: checking for dlopen
 configure:11538: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lnsl  >&5
-/usr/bin/ld: /tmp/cc0go1eE.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:74: undefined reference to `dlopen'
+/usr/bin/ld: /tmp/ccHUqKbB.o: in function `main':
+/home/hxg/work/zend/conftest.c:74: undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 configure:11538: $? = 1
 configure: failed program was:
@@ -1333,8 +1333,8 @@ configure: failed program was:
 configure:11538: result: no
 configure:11542: checking for __dlopen
 configure:11542: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lnsl  >&5
-/usr/bin/ld: /tmp/ccAYpa8E.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:74: undefined reference to `__dlopen'
+/usr/bin/ld: /tmp/ccTNp0tC.o: in function `main':
+/home/hxg/work/zend/conftest.c:74: undefined reference to `__dlopen'
 collect2: error: ld returned 1 exit status
 configure:11542: $? = 1
 configure: failed program was:
@@ -2375,8 +2375,8 @@ configure:12544: checking for broken getcwd
 configure:12555: result: no
 configure:12560: checking for broken libc stdio
 configure:12621: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/cciHN6vz.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:108: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+/usr/bin/ld: /tmp/cco5YmPp.o: in function `main':
+/home/hxg/work/zend/conftest.c:108: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
 configure:12621: $? = 0
 configure:12621: ./conftest
 configure:12621: $? = 1
@@ -6497,8 +6497,8 @@ configure:14945: $? = 0
 configure:14945: result: yes
 configure:14951: checking for _doprnt
 configure:14951: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccQN7ud6.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:194: undefined reference to `_doprnt'
+/usr/bin/ld: /tmp/ccqL33jS.o: in function `main':
+/home/hxg/work/zend/conftest.c:194: undefined reference to `_doprnt'
 collect2: error: ld returned 1 exit status
 configure:14951: $? = 1
 configure: failed program was:
@@ -6722,8 +6722,8 @@ configure:15048: $? = 0
 configure:15048: result: yes
 configure:15048: checking for crypt
 configure:15048: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccdmGXmD.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:199: undefined reference to `crypt'
+/usr/bin/ld: /tmp/cck1qJLe.o: in function `main':
+/home/hxg/work/zend/conftest.c:199: undefined reference to `crypt'
 collect2: error: ld returned 1 exit status
 configure:15048: $? = 1
 configure: failed program was:
@@ -6932,8 +6932,8 @@ configure: failed program was:
 configure:15048: result: no
 configure:15048: checking for explicit_memset
 configure:15048: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccTlmPH0.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:199: undefined reference to `explicit_memset'
+/usr/bin/ld: /tmp/ccjFJPJB.o: in function `main':
+/home/hxg/work/zend/conftest.c:199: undefined reference to `explicit_memset'
 collect2: error: ld returned 1 exit status
 configure:15048: $? = 1
 configure: failed program was:
@@ -7150,8 +7150,8 @@ configure:15048: $? = 0
 configure:15048: result: yes
 configure:15048: checking for funopen
 configure:15048: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccPHe9Of.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:201: undefined reference to `funopen'
+/usr/bin/ld: /tmp/ccC3ePCR.o: in function `main':
+/home/hxg/work/zend/conftest.c:201: undefined reference to `funopen'
 collect2: error: ld returned 1 exit status
 configure:15048: $? = 1
 configure: failed program was:
@@ -7595,8 +7595,8 @@ configure:15048: $? = 0
 configure:15048: result: yes
 configure:15048: checking for std_syslog
 configure:15048: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccKc0ceI.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:253: undefined reference to `std_syslog'
+/usr/bin/ld: /tmp/cc9D6Qfk.o: in function `main':
+/home/hxg/work/zend/conftest.c:253: undefined reference to `std_syslog'
 collect2: error: ld returned 1 exit status
 configure:15048: $? = 1
 configure: failed program was:
@@ -7920,8 +7920,8 @@ configure:15048: $? = 0
 configure:15048: result: yes
 configure:15048: checking for tempnam
 configure:15048: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccdBZxhr.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:263: warning: the use of `tempnam' is dangerous, better use `mkstemp'
+/usr/bin/ld: /tmp/ccwb48Jb.o: in function `main':
+/home/hxg/work/zend/conftest.c:263: warning: the use of `tempnam' is dangerous, better use `mkstemp'
 configure:15048: $? = 0
 configure:15048: result: yes
 configure:15048: checking for tzset
@@ -7991,8 +7991,8 @@ configure:15297: $? = 0
 configure:15305: result: yes
 configure:15313: checking for strlcat
 configure:15313: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lrt -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccXcWQBU.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:277: undefined reference to `strlcat'
+/usr/bin/ld: /tmp/ccyRsv3E.o: in function `main':
+/home/hxg/work/zend/conftest.c:277: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:15313: $? = 1
 configure: failed program was:
@@ -8279,8 +8279,8 @@ configure: failed program was:
 configure:15313: result: no
 configure:15326: checking for strlcpy
 configure:15326: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lrt -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/ccC0EzWU.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:277: undefined reference to `strlcpy'
+/usr/bin/ld: /tmp/cch609zK.o: in function `main':
+/home/hxg/work/zend/conftest.c:277: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:15326: $? = 1
 configure: failed program was:
@@ -9197,8 +9197,8 @@ configure:15853: checking for in_addr_t
 configure:15878: result: yes
 configure:15889: checking for crypt_r
 configure:15889: cc -o conftest -g -O2 -fvisibility=hidden   conftest.c -lrt -lm -ldl -lnsl  >&5
-/usr/bin/ld: /tmp/cchIa48i.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:285: undefined reference to `crypt_r'
+/usr/bin/ld: /tmp/ccmDsT97.o: in function `main':
+/home/hxg/work/zend/conftest.c:285: undefined reference to `crypt_r'
 collect2: error: ld returned 1 exit status
 configure:15889: $? = 1
 configure: failed program was:
@@ -10688,16 +10688,16 @@ configure:57524: $? = 0
 configure:57536: result: yes
 configure:57539: checking for mmap() using shm_open() shared memory support
 configure:57611: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lxml2 >&5
-/usr/bin/ld: /tmp/ccXZmsS5.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:318: warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+/usr/bin/ld: /tmp/ccY0ExcV.o: in function `main':
+/home/hxg/work/zend/conftest.c:318: warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
 configure:57611: $? = 0
 configure:57611: ./conftest
 configure:57611: $? = 0
 configure:57623: result: yes
 configure:57626: checking for mmap() using regular file shared memory support
 configure:57698: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lrt -lm -ldl -lnsl  -lxml2 -lxml2 >&5
-/usr/bin/ld: /tmp/ccvTDUg1.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:319: warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+/usr/bin/ld: /tmp/ccth3nvN.o: in function `main':
+/home/hxg/work/zend/conftest.c:319: warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
 configure:57698: $? = 0
 configure:57698: ./conftest
 configure:57698: $? = 0
@@ -10722,7 +10722,7 @@ configure:66290: checking for sqlite 3 support for PDO
 configure:66326: result: yes
 configure:66340: checking for PDO includes
 configure:66346: checking for PDO includes
-configure:66357: result: /home/hxg/work/php-7.3.33-src/ext
+configure:66357: result: /home/hxg/work/zend/ext
 configure:67624: checking for usleep
 configure:67624: result: yes
 configure:67624: checking for nanosleep
@@ -11466,8 +11466,8 @@ configure:70328: $? = 0
 configure:70328: result: yes
 configure:70328: checking for makedev
 configure:70328: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 >&5
-/usr/bin/ld: /tmp/cc32aXvM.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:351: undefined reference to `makedev'
+/usr/bin/ld: /tmp/ccLcNGTB.o: in function `main':
+/home/hxg/work/zend/conftest.c:351: undefined reference to `makedev'
 collect2: error: ld returned 1 exit status
 configure:70328: $? = 1
 configure: failed program was:
@@ -11906,8 +11906,8 @@ conftest.c:354:2: warning: ignoring return value of 'fgets', declared with attri
 conftest.c:357:2: warning: ignoring return value of 'fgets', declared with attribute warn_unused_result [-Wunused-result]
   357 |  fgets(buffer, sizeof(buffer), fp);
       |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/usr/bin/ld: /tmp/ccuyfei3.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:337: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+/usr/bin/ld: /tmp/cc0MSsqP.o: in function `main':
+/home/hxg/work/zend/conftest.c:337: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
 configure:79471: $? = 0
 configure:79471: ./conftest
 configure:79471: $? = 0
@@ -11966,8 +11966,8 @@ configure:80011: $? = 0
 configure:80011: result: yes
 configure:80011: checking for getwd
 configure:80011: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cc7PRbVV.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:368: warning: the `getwd' function is dangerous and should not be used.
+/usr/bin/ld: /tmp/ccxUaBFJ.o: in function `main':
+/home/hxg/work/zend/conftest.c:368: warning: the `getwd' function is dangerous and should not be used.
 configure:80011: $? = 0
 configure:80011: result: yes
 configure:80011: checking for asinh
@@ -12037,8 +12037,8 @@ configure:80011: $? = 0
 configure:80011: result: yes
 configure:80011: checking for fpclass
 configure:80011: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cchczXYr.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:377: undefined reference to `fpclass'
+/usr/bin/ld: /tmp/ccRniKGh.o: in function `main':
+/home/hxg/work/zend/conftest.c:377: undefined reference to `fpclass'
 collect2: error: ld returned 1 exit status
 configure:80011: $? = 1
 configure: failed program was:
@@ -12432,8 +12432,8 @@ configure:80011: $? = 0
 configure:80011: result: yes
 configure:80011: checking for strpncpy
 configure:80011: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccjHoOGu.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:378: undefined reference to `strpncpy'
+/usr/bin/ld: /tmp/ccpwbEtj.o: in function `main':
+/home/hxg/work/zend/conftest.c:378: undefined reference to `strpncpy'
 collect2: error: ld returned 1 exit status
 configure:80011: $? = 1
 configure: failed program was:
@@ -12836,8 +12836,8 @@ configure:80092: checking if your OS can spawn processes with inherited handles
 configure:80095: result: yes
 configure:80138: checking for res_nsearch
 configure:80138: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccXUZMq2.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:382: undefined reference to `res_nsearch'
+/usr/bin/ld: /tmp/ccqsomuP.o: in function `main':
+/home/hxg/work/zend/conftest.c:382: undefined reference to `res_nsearch'
 collect2: error: ld returned 1 exit status
 configure:80138: $? = 1
 configure: failed program was:
@@ -13229,8 +13229,8 @@ configure: failed program was:
 configure:80138: result: no
 configure:80142: checking for __res_nsearch
 configure:80142: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccfdmRW7.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:382: undefined reference to `__res_nsearch'
+/usr/bin/ld: /tmp/ccecR6HT.o: in function `main':
+/home/hxg/work/zend/conftest.c:382: undefined reference to `__res_nsearch'
 collect2: error: ld returned 1 exit status
 configure:80142: $? = 1
 configure: failed program was:
@@ -13622,8 +13622,8 @@ configure: failed program was:
 configure:80142: result: no
 configure:80165: checking for res_nsearch in -lresolv
 configure:80190: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv  -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cccY4l8c.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:359: undefined reference to `res_nsearch'
+/usr/bin/ld: /tmp/cc2s7IdW.o: in function `main':
+/home/hxg/work/zend/conftest.c:359: undefined reference to `res_nsearch'
 collect2: error: ld returned 1 exit status
 configure:80190: $? = 1
 configure: failed program was:
@@ -14003,8 +14003,8 @@ configure:80261: ./conftest
 configure:80261: $? = 0
 configure:80576: checking for res_ndestroy
 configure:80576: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccITnwlR.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:384: undefined reference to `res_ndestroy'
+/usr/bin/ld: /tmp/ccSHHCuA.o: in function `main':
+/home/hxg/work/zend/conftest.c:384: undefined reference to `res_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:80576: $? = 1
 configure: failed program was:
@@ -14398,8 +14398,8 @@ configure: failed program was:
 configure:80576: result: no
 configure:80580: checking for __res_ndestroy
 configure:80580: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccVTP2LS.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:384: undefined reference to `__res_ndestroy'
+/usr/bin/ld: /tmp/cc2rGTAF.o: in function `main':
+/home/hxg/work/zend/conftest.c:384: undefined reference to `__res_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:80580: $? = 1
 configure: failed program was:
@@ -14793,8 +14793,8 @@ configure: failed program was:
 configure:80580: result: no
 configure:80603: checking for res_ndestroy in -lresolv
 configure:80628: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccJm3xsV.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:361: undefined reference to `res_ndestroy'
+/usr/bin/ld: /tmp/ccmw1GnI.o: in function `main':
+/home/hxg/work/zend/conftest.c:361: undefined reference to `res_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:80628: $? = 1
 configure: failed program was:
@@ -15165,8 +15165,8 @@ configure: failed program was:
 configure:80637: result: no
 configure:80643: checking for __res_ndestroy in -lresolv
 configure:80668: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccXKfscZ.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:361: undefined reference to `__res_ndestroy'
+/usr/bin/ld: /tmp/ccx4XFgK.o: in function `main':
+/home/hxg/work/zend/conftest.c:361: undefined reference to `__res_ndestroy'
 collect2: error: ld returned 1 exit status
 configure:80668: $? = 1
 configure: failed program was:
@@ -17021,8 +17021,8 @@ configure: failed program was:
 configure:80941: result: no
 configure:81014: checking for dns_search
 configure:81014: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccoF9IWi.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:384: undefined reference to `dns_search'
+/usr/bin/ld: /tmp/cccftSO4.o: in function `main':
+/home/hxg/work/zend/conftest.c:384: undefined reference to `dns_search'
 collect2: error: ld returned 1 exit status
 configure:81014: $? = 1
 configure: failed program was:
@@ -17416,8 +17416,8 @@ configure: failed program was:
 configure:81014: result: no
 configure:81018: checking for __dns_search
 configure:81018: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccY194Uj.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:384: undefined reference to `__dns_search'
+/usr/bin/ld: /tmp/ccv3LjM9.o: in function `main':
+/home/hxg/work/zend/conftest.c:384: undefined reference to `__dns_search'
 collect2: error: ld returned 1 exit status
 configure:81018: $? = 1
 configure: failed program was:
@@ -17811,8 +17811,8 @@ configure: failed program was:
 configure:81018: result: no
 configure:81041: checking for dns_search in -lresolv
 configure:81066: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccP1hNyo.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:361: undefined reference to `dns_search'
+/usr/bin/ld: /tmp/cck3pR0c.o: in function `main':
+/home/hxg/work/zend/conftest.c:361: undefined reference to `dns_search'
 collect2: error: ld returned 1 exit status
 configure:81066: $? = 1
 configure: failed program was:
@@ -18183,8 +18183,8 @@ configure: failed program was:
 configure:81075: result: no
 configure:81081: checking for __dns_search in -lresolv
 configure:81106: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv  -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cc5V8yRu.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:361: undefined reference to `__dns_search'
+/usr/bin/ld: /tmp/cchLgvPe.o: in function `main':
+/home/hxg/work/zend/conftest.c:361: undefined reference to `__dns_search'
 collect2: error: ld returned 1 exit status
 configure:81106: $? = 1
 configure: failed program was:
@@ -20039,8 +20039,8 @@ configure: failed program was:
 configure:81379: result: no
 configure:81452: checking for dn_expand
 configure:81452: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/ccOGdkOM.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:384: undefined reference to `dn_expand'
+/usr/bin/ld: /tmp/cc4oTJ7y.o: in function `main':
+/home/hxg/work/zend/conftest.c:384: undefined reference to `dn_expand'
 collect2: error: ld returned 1 exit status
 configure:81452: $? = 1
 configure: failed program was:
@@ -20438,8 +20438,8 @@ configure:81456: $? = 0
 configure:81456: result: yes
 configure:81890: checking for dn_skipname
 configure:81890: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cchvQlwy.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:385: undefined reference to `dn_skipname'
+/usr/bin/ld: /tmp/ccFO1hpm.o: in function `main':
+/home/hxg/work/zend/conftest.c:385: undefined reference to `dn_skipname'
 collect2: error: ld returned 1 exit status
 configure:81890: $? = 1
 configure: failed program was:
@@ -20838,8 +20838,8 @@ configure:81894: $? = 0
 configure:81894: result: yes
 configure:82330: checking for res_search
 configure:82330: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden  -L/usr/lib  conftest.c -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -lxml2 -lcrypt >&5
-/usr/bin/ld: /tmp/cce6ZhVm.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:386: undefined reference to `res_search'
+/usr/bin/ld: /tmp/ccjVYAla.o: in function `main':
+/home/hxg/work/zend/conftest.c:386: undefined reference to `res_search'
 collect2: error: ld returned 1 exit status
 configure:82330: $? = 1
 configure: failed program was:
@@ -23870,8 +23870,8 @@ configure:96247: checking for fpclass
 configure:96247: result: no
 configure:96247: checking for sigsetjmp
 configure:96247: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/cc2EZ4zw.o: in function `main':
-/home/hxg/work/php-7.3.33-src/conftest.c:428: undefined reference to `sigsetjmp'
+/usr/bin/ld: /tmp/ccN6ouLm.o: in function `main':
+/home/hxg/work/zend/conftest.c:428: undefined reference to `sigsetjmp'
 collect2: error: ld returned 1 exit status
 configure:96247: $? = 1
 configure: failed program was:
@@ -26479,11 +26479,11 @@ configure:96658: checking for dlfcn.h
 configure:96658: result: yes
 configure:96669: checking whether dlsym() requires a leading underscore in symbol names
 configure:96736: cc -o conftest -I/usr/include -g -O2 -fvisibility=hidden   conftest.c  >&5
-/usr/bin/ld: /tmp/cc6plfRo.o: in function `main':
-/home/hxg/work/php-7.3.33-src/configure:96751: undefined reference to `dlopen'
-/usr/bin/ld: /home/hxg/work/php-7.3.33-src/configure:96756: undefined reference to `dlsym'
-/usr/bin/ld: /home/hxg/work/php-7.3.33-src/configure:96761: undefined reference to `dlerror'
-/usr/bin/ld: /home/hxg/work/php-7.3.33-src/configure:96757: undefined reference to `dlsym'
+/usr/bin/ld: /tmp/cc91sTac.o: in function `main':
+/home/hxg/work/zend/configure:96751: undefined reference to `dlopen'
+/usr/bin/ld: /home/hxg/work/zend/configure:96756: undefined reference to `dlsym'
+/usr/bin/ld: /home/hxg/work/zend/configure:96761: undefined reference to `dlerror'
+/usr/bin/ld: /home/hxg/work/zend/configure:96757: undefined reference to `dlsym'
 collect2: error: ld returned 1 exit status
 configure:96739: $? = 1
 configure:96763: result: no
@@ -27071,17 +27071,17 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on hxg-OptiPlex-3060
 
-config.status:1431: creating php7.spec
-config.status:1431: creating main/build-defs.h
-config.status:1431: creating scripts/phpize
-config.status:1431: creating scripts/man1/phpize.1
-config.status:1431: creating scripts/php-config
-config.status:1431: creating scripts/man1/php-config.1
-config.status:1431: creating sapi/cli/php.1
-config.status:1431: creating sapi/phpdbg/phpdbg.1
-config.status:1431: creating sapi/cgi/php-cgi.1
-config.status:1431: creating main/php_config.h
-config.status:1615: executing default commands
+config.status:1430: creating php7.spec
+config.status:1430: creating main/build-defs.h
+config.status:1430: creating scripts/phpize
+config.status:1430: creating scripts/man1/phpize.1
+config.status:1430: creating scripts/php-config
+config.status:1430: creating scripts/man1/php-config.1
+config.status:1430: creating sapi/cli/php.1
+config.status:1430: creating sapi/phpdbg/phpdbg.1
+config.status:1430: creating sapi/cgi/php-cgi.1
+config.status:1430: creating main/php_config.h
+config.status:1614: executing default commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -27509,7 +27509,7 @@ lt_lt_cv_prog_compiler_c_o='"yes"'
 lt_lt_cv_sys_global_symbol_pipe='"sed -n -e '\''s/^.*[ 	]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[ 	][ 	]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p'\''"'
 lt_lt_cv_sys_global_symbol_to_c_name_address='"sed -n -e '\''s/^: \\([^ ]*\\) \$/  {\\\"\\1\\\", (lt_ptr) 0},/p'\'' -e '\''s/^[BCDEGRST] \\([^ ]*\\) \\([^ ]*\\)\$/  {\"\\2\", (lt_ptr) \\&\\2},/p'\''"'
 lt_lt_cv_sys_global_symbol_to_cdecl='"sed -n -e '\''s/^. .* \\(.*\\)\$/extern int \\1;/p'\''"'
-pdo_cv_inc_path=/home/hxg/work/php-7.3.33-src/ext
+pdo_cv_inc_path=/home/hxg/work/zend/ext
 php_cv_bison_version='3.5 (ok)'
 php_cv_cc_dashr=no
 php_cv_cc_rpath=yes
@@ -27562,7 +27562,7 @@ EXTRA_LIBS='-lcrypt   -lresolv -lcrypt -lrt -lrt -lm -ldl -lnsl  -lxml2 -lxml2 -
 FB_CONFIG=''
 GREP='/usr/bin/grep'
 ICU_CONFIG=''
-INCLUDES=' -I/home/hxg/work/php-7.3.33-src/ext/date/lib -I/usr/include/libxml2 -I/home/hxg/work/php-7.3.33-src/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I$(top_builddir)/Zend'
+INCLUDES=' -I/home/hxg/work/zend/ext/date/lib -I/usr/include/libxml2 -I/home/hxg/work/zend/ext/sqlite3/libsqlite -I$(top_builddir)/TSRM -I$(top_builddir)/Zend'
 INCLUDE_PATH='.:'
 INLINE_CFLAGS='-I/usr/include -g -O2 -fvisibility=hidden -prefer-non-pic -static'
 INSTALL_IT=''
@@ -27619,8 +27619,8 @@ UNZIP=''
 YACC='bison -y'
 YFLAGS=''
 ZEND_EXTRA_LIBS=''
-abs_builddir='/home/hxg/work/php-7.3.33-src'
-abs_srcdir='/home/hxg/work/php-7.3.33-src'
+abs_builddir='/home/hxg/work/zend'
+abs_srcdir='/home/hxg/work/zend'
 ac_ct_CC='cc'
 ac_ct_CXX=''
 bindir='${exec_prefix}/bin'
@@ -27649,8 +27649,8 @@ localstatedir='${prefix}/var'
 mandir='${datarootdir}/man'
 oldincludedir='/usr/include'
 pdfdir='${docdir}'
-php_abs_top_builddir='/home/hxg/work/php-7.3.33-src'
-php_abs_top_srcdir='/home/hxg/work/php-7.3.33-src'
+php_abs_top_builddir='/home/hxg/work/zend'
+php_abs_top_srcdir='/home/hxg/work/zend'
 php_fpm_group=''
 php_fpm_localstatedir=''
 php_fpm_prefix=''
@@ -28087,7 +28087,7 @@ target_vendor='pc'
 #define HAVE_SIGPROCMASK 1
 #define HAVE_GETHOSTBYNAME_R 1
 #define HAVE_FUNC_GETHOSTBYNAME_R_6 1
-#define PHP_BUILD_DATE "2022-02-24"
+#define PHP_BUILD_DATE "2022-03-01"
 #define PHP_UNAME "Linux hxg-OptiPlex-3060 5.4.0-100-generic #113-Ubuntu SMP Thu Feb 3 18:43:29 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux"
 #define PHP_OS "Linux"
 #define HAVE_BUILD_DEFS_H 1
