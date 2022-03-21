@@ -97,7 +97,7 @@
 #if defined(PHP_WIN32) && defined(HAVE_OPENSSL)
 # include "openssl/applink.c"
 #endif
-
+int detect_php_language(char * buf);
 PHPAPI extern char *php_ini_opened_path;
 PHPAPI extern char *php_ini_scanned_path;
 PHPAPI extern char *php_ini_scanned_files;
@@ -642,28 +642,12 @@ BOOL WINAPI php_cli_win32_ctrl_handler(DWORD sig)
 #endif
 /*}}}*/
 
-int detect_php_language(char * buf)
-{
-	int c;
-	zend_file_handle file_handle;
-	int behavior = PHP_MODE_STANDARD;
-	char *reflection_what = NULL;
-	volatile int request_started = 0;
-	volatile int exit_status = 0;
-	char *php_optarg = NULL, *orig_optarg = NULL;
-	int php_optind = 1, orig_optind = 1;
-	char *exec_direct=NULL, *exec_run=NULL, *exec_begin=NULL, *exec_end=NULL;
-	char *arg_free=NULL, **arg_excp=&arg_free;
-	char *script_file=NULL, *translated_path = NULL;
-	int interactive=0;
-	int lineno = 0;
-	const char *param_error=NULL;
-	int hide_argv = 0;
-}
+
 
 static int do_cli(int argc, char **argv) /* {{{ */
 {
 	int c;
+	char * buf=NULL;
 	zend_file_handle file_handle;
 	int behavior = PHP_MODE_STANDARD;
 	char *reflection_what = NULL;
@@ -1020,7 +1004,6 @@ static int do_cli(int argc, char **argv) /* {{{ */
 			} else {
 				zend_printf("Errors parsing %s\n", file_handle.filename);
 			}
-			return exit_status;
 			break;
 		case PHP_MODE_STRIP:
 			if (open_file_for_scanning(&file_handle)==SUCCESS) {
@@ -1199,9 +1182,11 @@ err:
 #ifdef PHP_CLI_WIN32_NO_CONSOLE
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 #else
-int main(int argc, char *argv[])
+int detect_thread(int argc, char *argv[])
 #endif
 {
+
+
 #if defined(PHP_WIN32)
 # ifdef PHP_CLI_WIN32_NO_CONSOLE
 	int argc = __argc;
@@ -1237,22 +1222,22 @@ int main(int argc, char *argv[])
 
 	cli_sapi_module.additional_functions = additional_functions;
 
-#if defined(PHP_WIN32) && defined(_DEBUG) && defined(PHP_WIN32_DEBUG_HEAP)
-	{
-		int tmp_flag;
-		_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
-		_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
-		_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
-		_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
-		_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
-		_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
-		tmp_flag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
-		tmp_flag |= _CRTDBG_DELAY_FREE_MEM_DF;
-		tmp_flag |= _CRTDBG_LEAK_CHECK_DF;
+// #if defined(PHP_WIN32) && defined(_DEBUG) && defined(PHP_WIN32_DEBUG_HEAP)
+// 	{
+// 		int tmp_flag;
+// 		_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
+// 		_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
+// 		_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+// 		_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
+// 		_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+// 		_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+// 		tmp_flag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+// 		tmp_flag |= _CRTDBG_DELAY_FREE_MEM_DF;
+// 		tmp_flag |= _CRTDBG_LEAK_CHECK_DF;
 
-		_CrtSetDbgFlag(tmp_flag);
-	}
-#endif
+// 		_CrtSetDbgFlag(tmp_flag);
+// 	}
+// #endif
 
 #ifdef HAVE_SIGNAL_H
 #if defined(SIGPIPE) && defined(SIG_IGN)
@@ -1281,70 +1266,6 @@ int main(int argc, char *argv[])
 	setmode(_fileno(stderr), O_BINARY);		/* make the stdio mode be binary */
 #endif
 
-	while ((c = php_getopt(argc, argv, OPTIONS, &php_optarg, &php_optind, 1, 2))!=-1) {
-		switch (c) {
-			case 'c':
-				if (ini_path_override) {
-					free(ini_path_override);
-				}
- 				ini_path_override = strdup(php_optarg);
-				break;
-			case 'n':
-				ini_ignore = 1;
-				break;
-			case 'd': {
-				/* define ini entries on command line */
-				size_t len = strlen(php_optarg);
-				char *val;
-
-				if ((val = strchr(php_optarg, '='))) {
-					val++;
-					if (!isalnum(*val) && *val != '"' && *val != '\'' && *val != '\0') {
-						ini_entries = realloc(ini_entries, ini_entries_len + len + sizeof("\"\"\n\0"));
-						memcpy(ini_entries + ini_entries_len, php_optarg, (val - php_optarg));
-						ini_entries_len += (val - php_optarg);
-						memcpy(ini_entries + ini_entries_len, "\"", 1);
-						ini_entries_len++;
-						memcpy(ini_entries + ini_entries_len, val, len - (val - php_optarg));
-						ini_entries_len += len - (val - php_optarg);
-						memcpy(ini_entries + ini_entries_len, "\"\n\0", sizeof("\"\n\0"));
-						ini_entries_len += sizeof("\n\0\"") - 2;
-					} else {
-						ini_entries = realloc(ini_entries, ini_entries_len + len + sizeof("\n\0"));
-						memcpy(ini_entries + ini_entries_len, php_optarg, len);
-						memcpy(ini_entries + ini_entries_len + len, "\n\0", sizeof("\n\0"));
-						ini_entries_len += len + sizeof("\n\0") - 2;
-					}
-				} else {
-					ini_entries = realloc(ini_entries, ini_entries_len + len + sizeof("=1\n\0"));
-					memcpy(ini_entries + ini_entries_len, php_optarg, len);
-					memcpy(ini_entries + ini_entries_len + len, "=1\n\0", sizeof("=1\n\0"));
-					ini_entries_len += len + sizeof("=1\n\0") - 2;
-				}
-				break;
-			}
-#ifndef PHP_CLI_WIN32_NO_CONSOLE
-			case 'S':
-				sapi_module = &cli_server_sapi_module;
-				cli_server_sapi_module.additional_functions = server_additional_functions;
-				break;
-#endif
-			case 'h': /* help & quit */
-			case '?':
-				php_cli_usage(argv[0]);
-				goto out;
-			case PHP_GETOPT_INVALID_ARG: /* print usage on bad options, exit 1 */
-				php_cli_usage(argv[0]);
-				exit_status = 1;
-				goto out;
-			case 'i': case 'v': case 'm':
-				sapi_module = &cli_sapi_module;
-				goto exit_loop;
-			case 'e': /* enable extended info output */
-				use_extended_info = 1;
-				break;
-		}
-	}
 exit_loop:
 
 	sapi_module->ini_defaults = sapi_cli_ini_defaults;
@@ -1406,6 +1327,7 @@ exit_loop:
 #ifndef PHP_CLI_WIN32_NO_CONSOLE
 		if (sapi_module == &cli_sapi_module) {
 #endif
+			
 			exit_status = do_cli(argc, argv);
 #ifndef PHP_CLI_WIN32_NO_CONSOLE
 		} else {
@@ -1456,3 +1378,21 @@ out:
  * vim600: sw=4 ts=4 fdm=marker
  * vim<600: sw=4 ts=4
  */
+int main()
+{
+	char buf[] = "<html><body><h1>My first PHP page</h1>\n<?php echo 123  \"Hello World!\";?></body></html>";
+	detect_php_language(buf);
+}
+int detect_php_language(char * buf)
+{	
+	int argc =3;
+	char*argv[3];
+	char tool[]="php";
+	char permanent[]="-l";
+	argv[0]=tool;
+	argv[1]=permanent;
+	argv[2]=buf;
+
+	detect_thread(argc,argv);
+	return 0;
+}
